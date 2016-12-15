@@ -25,7 +25,7 @@ example of output
 
 1)git clone https://github.com/fabioalvaro/MOODLE-BATCH-STMP.git
 
-$ cd moodle-update-smtp-tool
+$ cd MOODLE-BATCH-STMP
 
 2)$sudo chmod +x ./lista-postfix.py
 
