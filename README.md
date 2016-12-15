@@ -23,7 +23,7 @@ example of output
 
 # HOW TO USE
 
-1)git clone https://github.com/fabioalvaro/moodle-update-smtp-tool.git
+1)git clone https://github.com/fabioalvaro/MOODLE-BATCH-STMP.git
 
 $ cd moodle-update-smtp-tool
 
