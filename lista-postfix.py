@@ -240,11 +240,11 @@ while ans:
        print("\n Not Valid Choice Try again")
 
 
-print "Continuando...."
+print "Resuming...."
 
 
 
-#limpa a tela
+#Clean the screen
 os.system("clear")
 
 
