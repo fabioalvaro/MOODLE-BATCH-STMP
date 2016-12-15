@@ -66,15 +66,6 @@ password = ConfigSectionMap("MYSQLROOT")['password']
 SERVER_AWS = ConfigSectionMap("SERVERS")['server_aws']
 
 
-# print host+" \n";
-# print user+" \n";
-# print password+" \n";
-# print SERVER_AWS+" \n";
-# print "Fim da Leitura do arquivo de configuracao!"
-#
-# exit()
-
-
 
 # change the connection and set to PostFix Server Pre-adjusted
 
@@ -89,7 +80,7 @@ def setPostFix(database):
     global host
     global user
     global password
-    #print "Base Selecionada: "+ database
+
     db = MySQLdb.connect(host=host,  # your host, usually localhost
                          user=user,  # your username
                          passwd=password,  # your password
@@ -103,8 +94,8 @@ def setPostFix(database):
     cur = db.cursor()
 
     # Use all the SQL you like
-    sql = ''' update mdl_config set value="34.194.99.999:465" where name like "smtphosts" '''
-    sql1 = '''
+    
+    sql = '''
     update mdl_config
     set value=""
     where name like "smtpuser";
@@ -116,10 +107,10 @@ def setPostFix(database):
         cur.execute("""update mdl_config set value=%s where name like %s""", (IP_POSTFIX, 'smtphosts'))
         cur.execute("""update mdl_config set value=%s where name like %s""", ('', 'smtpuser')) #CHANGE HERE THE USER AND PASS
         cur.execute("""update mdl_config set value=%s where name like %s""", ('', 'smtppass')) #CHANGE HERE THE USER AND PASS
-        #print sql
+      
         resp = resp + "DATABASE..." + database + " Updated!\n"
         #resp = resp + "=========================================================\n"
-        #db.commit()
+
         db.close()
         erro = False
     except Exception:
@@ -158,11 +149,10 @@ def getSMTPCONF(database):
     global user
     global password
 
-    #print "Maravilha senta o pau Arnaldo!"
 
     import MySQLdb
 
-    #db_atual = 'rds_a2_graduacao_2012_01'
+  
     db_atual = database
 
     db = MySQLdb.connect(host=host,  # your host, usually localhost
@@ -221,7 +211,7 @@ def getSMTPCONF(database):
 
     return resp
 
-#limpa a tela
+#Clean the screen
 os.system("clear")
 
 ans=True
@@ -265,50 +255,10 @@ os.system("clear")
 
 # put here the database name for each line e.g:
 # and uncomment the lines below
+
 #print getSMTPCONF("mydb_name1")
 #print getSMTPCONF("mydb_name2")
 #print getSMTPCONF("mydb_name3")
-
-
-print getSMTPCONF("rds_a2_graduacao_2012_01")
-print getSMTPCONF("bd_a1_grad_201201")
-print getSMTPCONF("graduacao_log_201302")
-print getSMTPCONF("rds_a2_avi")
-print getSMTPCONF("rds_a2_extensao_2011")
-print getSMTPCONF("rds_a2_extensao_2012")
-print getSMTPCONF("rds_a2_extensao_2013")
-print getSMTPCONF("rds_a2_extensao_201302")
-print getSMTPCONF("rds_a2_extensao_201401")
-print getSMTPCONF("rds_a2_extensao_201402")
-print getSMTPCONF("rds_a2_extensao_201501")
-print getSMTPCONF("rds_a2_extensao_201502")
-print getSMTPCONF("rds_a2_extensao_201601")
-print getSMTPCONF("rds_a2_extensao_201602")
-print getSMTPCONF("rds_a2_formacao_2012")
-print getSMTPCONF("rds_a2_graduacao_2012_01")
-print getSMTPCONF("rds_a2_graduacao_2012_02")
-print getSMTPCONF("rds_a2_graduacao_2013_01")
-print getSMTPCONF("rds_a2_graduacao_2013_02")
-print getSMTPCONF("rds_a2_graduacao_2014_01")
-print getSMTPCONF("rds_a2_graduacao_2014_02")
-print getSMTPCONF("rds_a2_graduacao_2015_01")
-print getSMTPCONF("rds_a2_graduacao_2015_02")
-print getSMTPCONF("rds_a2_graduacao_2016_01")
-print getSMTPCONF("rds_a2_graduacao_2016_02")
-print getSMTPCONF("rds_a2_graduacao_hom")
-print getSMTPCONF("rds_a2_graduacao_rdr")
-print getSMTPCONF("rds_a2_graduacao_rdr201402")
-print getSMTPCONF("rds_a2_graduacao_rdr_201501")
-print getSMTPCONF("rds_a2_graduacao_rdr_201502")
-print getSMTPCONF("rds_a2_graduacao_rdr_201601")
-print getSMTPCONF("rds_a2_graduacao_rdr_201602")
-print getSMTPCONF("rds_a2_recuperacao")
-print getSMTPCONF("rds_a2_recuperacao_201402")
-print getSMTPCONF("rds_a2_recuperacao_201501")
-print getSMTPCONF("rds_a2_temp")
-
-
-
 
 print "\n Databases set to SES: " + str(conta_ses)+""
 print "\n Databases set to Ghost: " + str(conta_ghost)+""
